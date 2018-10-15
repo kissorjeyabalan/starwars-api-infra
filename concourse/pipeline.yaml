@@ -1,0 +1,44 @@
+jobs:
+- name: ci
+  plan:
+  - aggregate:
+    - get: sw-api
+      trigger: true
+    - get: sw-api-infra
+  - task: sync_heroku
+    file: sw-api-infra/concourse/heroku/heroku_sync.yml
+    input_mapping: {source: sw-api}
+    params:
+      HEROKU_API_KEY = ((HEROKU_API_KEY))
+      HEROKU_EMAIL = ((HEROKU_EMAIL))
+      HEROKU_APP_NAME = ((HEROKU_APP_NAME))
+- name: infra
+  plan:
+  - aggregate:
+    - get: sw-api-infra
+      trigger: true
+  - task: apply
+    file: sw-api-infra/concourse/terraform/task.yaml
+    input_mapping: {source: sw-api-infra}
+    params:
+      GITHUB_TOKEN = ((GITHUB_TOKEN))
+      HEROKU_API_KEY = ((HEROKU_API_KEY))
+      command: apply
+      directories: |
+          terraform
+  - put: sw-api-infra
+    params:
+      repository: with-state
+      rebase: true
+- name: sw-api
+  type: git
+  source:
+    uri: git@github.com:kissorjeyabalan/sw-api.git
+    branch: master
+    private_key: ((deploy_key_app))
+- name: sw-api-infra
+  type: git
+  source:
+    uri: git@github.com:kissorjeyabalan/sw-api-infra.git
+    branch: master
+    private_key: ((deploy_key_app))
