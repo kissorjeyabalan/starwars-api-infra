@@ -18,7 +18,7 @@ print() {
 
 setup() {
     export DIR="$PWD"
-    export GITHUB_TOKEN="${GITHUB_TOKEN}"
+    export GITHUB_TOKEN="${github_token}"
     export HEROKU_API_KEY="$HEROKU_API_KEY"
 }
 

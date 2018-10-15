@@ -1,4 +1,5 @@
 jobs:
+# Replace params / app_name with your heroku app name
 - name: ci
   plan:
   - aggregate:
@@ -6,12 +7,13 @@ jobs:
       trigger: true
     - get: sw-api-infra
   - task: sync_heroku
-    file: sw-api-infra/concourse/heroku/heroku_sync.yml
+    file: sw-api-infra/concourse/heroku/heroku_sync.yaml
     input_mapping: {source: sw-api}
     params:
-      HEROKU_API_KEY = ((HEROKU_API_KEY))
-      HEROKU_EMAIL = ((HEROKU_EMAIL))
-      HEROKU_APP_NAME = ((HEROKU_APP_NAME))
+      app_name: ((heroku_app_name))
+      heroku_email: ((heroku_email))
+      heroku_api_token: ((heroku_api_key))
+
 - name: infra
   plan:
   - aggregate:
@@ -21,24 +23,34 @@ jobs:
     file: sw-api-infra/concourse/terraform/task.yaml
     input_mapping: {source: sw-api-infra}
     params:
-      GITHUB_TOKEN = ((GITHUB_TOKEN))
-      HEROKU_API_KEY = ((HEROKU_API_KEY))
+      github_token: ((github_token))
+      heroku_api_key: ((heroku_api_key))
       command: apply
       directories: |
           terraform
+
+#  The with-state is an output from the apply task. It's a git repo with
+#  An updated terraform tfstate file.
+
   - put: sw-api-infra
     params:
       repository: with-state
       rebase: true
+
+resources:
+
+# Replace with your own repository
 - name: sw-api
   type: git
   source:
-    uri: git@github.com:kissorjeyabalan/sw-api.git
-    branch: master
-    private_key: ((deploy_key_app))
+      uri: git@github.com:kissorjeyabalan/sw-api.git
+      branch: master
+      private_key: ((deploy_app_ssh))
+
+# Replace with your own repository
 - name: sw-api-infra
   type: git
   source:
-    uri: git@github.com:kissorjeyabalan/sw-api-infra.git
-    branch: master
-    private_key: ((deploy_key_app))
+      uri: git@github.com:kissorjeyabalan/sw-api-infra.git
+      branch: master
+      private_key: ((deploy_infra_ssh))
