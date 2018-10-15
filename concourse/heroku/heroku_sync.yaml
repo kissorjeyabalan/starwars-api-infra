@@ -15,7 +15,7 @@ params:
   OUTPUT_NAME:
 run:
   path: /bin/bash
-  dir: source
+  # dir: source
   args:
     - sw-api-infra/concourse/heroku/build.sh
   #args:
