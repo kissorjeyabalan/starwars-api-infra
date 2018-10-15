@@ -2,8 +2,8 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: psharkey/heroku-cli
-    tag: "latest"
+    repository: kissorjeyabalan/heroku-cli-maven
+    tag: "1.0.1"
 inputs:
 - name: source
 params:
