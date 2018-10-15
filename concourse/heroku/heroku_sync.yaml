@@ -10,16 +10,18 @@ outputs:
 - name: artifact
   path: artifacts/
 caches:
-  - path: build-cache
+  - path: maven
 params:
   OUTPUT_NAME:
 run:
-  path: sh
+  path: /bin/bash
   dir: source
   args:
-    - -exc
-    - |
-      mvn install
-      ls
-      ls target/
-      mv target/${OUTPUT_NAME} artifacts/
+    - sw-api-infra/concourse/heroku/build.sh
+  #args:
+  #  - -exc
+  #  - |
+  #    mvn install
+  #    ls
+  #    ls target/
+  #    mv target/${OUTPUT_NAME} artifacts/
