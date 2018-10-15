@@ -8,9 +8,9 @@ inputs:
 - name: source
 
 params:
- HEROKU_EMAIL: ((heroku_email))
- HEROKU_API_KEY: ((heroku_api_key))
- HEROKU_APP_NAME: ((heroku_app_name))
+ HEROKU_EMAIL:
+ HEROKU_API_KEY:
+ HEROKU_APP_NAME:
 run:
   path: sh
   dir: source
