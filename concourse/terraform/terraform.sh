@@ -69,7 +69,7 @@ terraform_apply() {
     set -e
     git config --global user.email "concourse-ci@localhost"
     git config --global user.name "concourse-ci"
-    git add terraform.tfstate
+    git add .
     git status
     git commit -m"IaC - Update"
     git clone "${DIR}/source" "${DIR}/with-state"
