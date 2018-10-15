@@ -10,9 +10,7 @@ jobs:
     file: sw-api-infra/concourse/heroku/heroku_sync.yaml
     input_mapping: {source: sw-api}
     params:
-      app_name: ((heroku_app_name))
-      heroku_email: ((heroku_email))
-      heroku_api_token: ((heroku_api_key))
+      
 
 - name: infra
   plan:
@@ -25,6 +23,7 @@ jobs:
     params:
       github_token: ((github_token))
       heroku_api_key: ((heroku_api_key))
+      heroku_email: ((heroku_email))
       command: apply
       directories: |
           terraform

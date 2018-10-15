@@ -19,7 +19,8 @@ print() {
 setup() {
     export DIR="$PWD"
     export GITHUB_TOKEN="${github_token}"
-    export HEROKU_API_KEY="$HEROKU_API_KEY"
+    export HEROKU_API_KEY="${HEROKU_API_KEY}"
+    export HEROKU_EMAIL="${HEROKU_EMAIL}"
 }
 
 setup_cache() {
