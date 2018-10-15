@@ -23,6 +23,7 @@ resource "heroku_addon" "db_staging" {
 #### Production
 resource "heroku_app" "production" {
   name = "${var.app_prefix}-prod"
+  region = "eu"
 }
 
 resource "heroku_addon" "db_prod" {
@@ -32,8 +33,7 @@ resource "heroku_addon" "db_prod" {
 
 ### Add stages to pipeline
 resource "heroku_pipeline" "swapi" {
-  app = "${var.pipeline_name}"
-  region = "eu"
+  name = "${var.pipeline_name}"
 }
 
 resource "heroku_pipeline_coupling" "ci" {
