@@ -6,6 +6,7 @@ image_resource:
     tag: "1.0.1"
 inputs:
 - name: source
+- name: infra
 outputs:
 - name: artifact
   path: artifacts/
@@ -17,7 +18,7 @@ run:
   path: /bin/bash
   # dir: source
   args:
-    - sw-api-infra/concourse/heroku/build.sh
+    - ./infra/concourse/heroku/build.sh
   #args:
   #  - -exc
   #  - |

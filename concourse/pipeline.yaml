@@ -8,7 +8,7 @@ jobs:
     - get: sw-api-infra
   - task: build_jar
     file: sw-api-infra/concourse/heroku/heroku_sync.yaml
-    input_mapping: {source: sw-api}
+    input_mapping: {source: sw-api, infra: sw-api-infra}
     params:
       OUTPUT_NAME: ((artifact_name))
   - task: deploy_jar
