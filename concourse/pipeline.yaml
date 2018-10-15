@@ -13,7 +13,11 @@ jobs:
       OUTPUT_NAME: ((artifact_name))
   - task: deploy_jar
     file: sw-api-infra/concourse/heroku/heroku_deploy.yaml
-
+    params:
+      HEROKU_APP_NAME: ((heroku_app_name))-ci
+      HEROKU_API_KEY: ((heroku_api_key))
+      HEROKU_EMAIL: ((heroku_email))
+      ARTIFACT_NAME: ((artifact_name))
 - name: infra
   plan:
   - aggregate:

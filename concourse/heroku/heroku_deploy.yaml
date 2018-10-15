@@ -6,7 +6,15 @@ image_resource:
     tag: "1.0.1"
 inputs:
 - name: artifact
-outputs:
+params:
+  HEROKU_APP_NAME:
+  HEROKU_API_KEY:
+  HEROKU_EMAIL:
+  ARTIFACT_NAME:
 run:
-  path: find
-  args: [.]
+  path: sh
+  dir: artifact
+  args:
+    - -exc
+    - |
+    heroku deploy:jar ${ARTIFACT_NAME} --app ${HEROKU_APP_NAME}
