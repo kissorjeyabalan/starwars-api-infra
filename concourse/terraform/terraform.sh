@@ -34,26 +34,27 @@ setup_cache() {
 }
 
 terraform_fmt() {
-    if ! terraform fmt -check=true >> dev/null/; then
-        print failure "terraform fmt (some files need to be formatted, run 'terraform fmt' to fix)"
+    if ! terraform fmt -check=true >> /dev/null; then
+        print failure "terraform fmt (Some files need to be formatted, run 'terraform fmt' to fix.)"
         exit 1
     fi
     print success "terraform fmt"
 }
 
 terraform_get() {
-    terraform init -backend=false -input=false >> dev/null/
+    terraform init -backend=false -input=false >> /dev/null
     print success "terraform get (init without backend)"
 }
 
 terraform_init() {
-    terraform init -input=false -lock-timeout=$LOCK_TIMEOUT >> /dev/null
+    terraform init -input=false -lock-timeout=$lock_timeout >> /dev/null
     print success "terraform init"
 }
 
 terraform_plan() {
-    terraform init
-    terraform plan -lock=false -nocolor | tee "${DIR}/terraform/full-plan"
+    terraform_init
+    terraform plan -lock=false -no-color | tee "${DIR}/terraform/full-plan"
+
     echo "\`\`\`diff" > "${DIR}/terraform/plan"
     sed -n -e '/------------------------------------------------------------------------/,$p' "${DIR}/terraform/full-plan" >> "${DIR}/terraform/plan"
     echo "\`\`\`" >> "${DIR}/terraform/plan"
@@ -61,7 +62,8 @@ terraform_plan() {
 
 terraform_apply() {
     terraform_init
-    terraform apply -refresh=true -auto-approve=true -lock-timeout=$LOCK_TIMEOUT
+    terraform apply -refresh=true -auto-approve=true -lock-timeout=$lock_timeout
+
     set +e
     terraform output -json > ${DIR}/terraform/output.json
     set -e
@@ -69,7 +71,7 @@ terraform_apply() {
     git config --global user.name "concourse-ci"
     git add terraform.tfstate
     git status
-    git commit -m "Updated infrastructure state"
+    git commit -m"IaC - Update"
     git clone "${DIR}/source" "${DIR}/with-state"
 }
 
@@ -84,7 +86,7 @@ terraform_test() {
     terraform_fmt
     terraform_get
     terraform validate
-    print success "terraform validated"
+    print success "terraform validate"
 }
 
 main() {
@@ -98,7 +100,6 @@ main() {
     fi
 
     setup
-
     for directory in $directories; do
         if [ ! -d "$DIR/source/$directory" ]; then
             print failure "Directory not found: $directory"
