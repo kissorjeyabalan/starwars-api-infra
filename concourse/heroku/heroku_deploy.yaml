@@ -17,4 +17,4 @@ run:
   args:
     - -exc
     - |
-    heroku deploy:jar ${ARTIFACT_NAME} --app ${HEROKU_APP_NAME}
+      heroku deploy:jar ${ARTIFACT_NAME} --app ${HEROKU_APP_NAME}
