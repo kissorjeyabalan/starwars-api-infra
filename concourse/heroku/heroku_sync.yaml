@@ -7,7 +7,7 @@ image_resource:
 inputs:
 - name: source
 params:
-  EROKU_EMAIL:
+  HEROKU_EMAIL:
   HEROKU_API_KEY:
   HEROKU_APP_NAME:
 run:
