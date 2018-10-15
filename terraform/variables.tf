@@ -3,5 +3,5 @@ variable "app_prefix" {
 }
 
 variable "pipeline_name" {
-    default = "swapi--pipeline"
+    default = "swapi-pipeline"
 }
