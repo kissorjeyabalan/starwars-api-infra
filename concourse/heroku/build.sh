@@ -6,7 +6,7 @@ export DIR=$( pwd )
 export REPO=sw-api
 
 M2_HOME="${HOME}/.m2"
-M2_CACHE="${ROOT_FOLDER}/maven"
+M2_CACHE="${REPO}/maven"
 
 echo "Symlinking cache"
 [[ -d "${M2_CACHE}" && ! -d "${M2_HOME}" ]] && ln -s "${M2_CACHE}" "${M2_HOME}"
