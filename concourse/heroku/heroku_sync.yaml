@@ -9,6 +9,8 @@ inputs:
 outputs:
 - name: artifact
   path: artifacts/
+caches:
+  - path: build-cache
 params:
   OUTPUT_NAME:
 run:
