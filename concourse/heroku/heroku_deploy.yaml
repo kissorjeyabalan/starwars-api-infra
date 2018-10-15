@@ -1,0 +1,12 @@
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: kissorjeyabalan/heroku-cli-maven
+    tag: "1.0.1"
+inputs:
+- name: artifact
+outputs:
+run:
+  path: find
+  args: [.]

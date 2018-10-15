@@ -6,13 +6,13 @@ jobs:
     - get: sw-api
       trigger: true
     - get: sw-api-infra
-  - task: sync_heroku
+  - task: build_jar
     file: sw-api-infra/concourse/heroku/heroku_sync.yaml
     input_mapping: {source: sw-api}
     params:
-      HEROKU_EMAIL: ((heroku_email))
-      HEROKU_API_KEY: ((heroku_api_key))
-      HEROKU_APP_NAME: ((heroku_app_name))
+      OUTPUT_NAME: ((artifact_name))
+  - task: deploy_jar
+    file: sw-api-infra/concourse/heroku/heroku_deploy.yaml
 
 - name: infra
   plan:
