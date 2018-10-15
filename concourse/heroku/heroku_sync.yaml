@@ -20,4 +20,6 @@ run:
     - -exc
     - |
       mvn install
+      ls
+      ls target/
       mv target/${OUTPUT_NAME} artifacts/
