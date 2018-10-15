@@ -42,13 +42,13 @@ resource "heroku_pipeline_coupling" "ci" {
   stage = "development"
 }
 
-resources "heroku_pipeline_coupling" "staging" {
+resource "heroku_pipeline_coupling" "staging" {
   app = "${heroku_app.staging.name}"
   pipeline = "${heroku_pipeline.swapi.id}"
   stage = "staging"
 }
 
-resources "heroku_pipeline_coupling" "production" {
+resource "heroku_pipeline_coupling" "production" {
   app = "${heroku_app.production.name}"
   pipeline = "${heroku_pipeline.swapi.id}"
   stage = "production"
