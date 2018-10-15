@@ -8,7 +8,7 @@ inputs:
 - name: source
 
 params:
- HEROKU_EMAIL:
+ HEROKU_EMAIL: 
  HEROKU_API_KEY:
  HEROKU_APP_NAME:
 run:
@@ -17,12 +17,4 @@ run:
   args:
     - -exc
     - |
-      cat > /root/.netrc <<EOF
-      machine api.heroku.com
-        login ${HEROKU_EMAIL}
-        password ${HEROKU_API_KEY}
-      machine git.heroku.com
-        login ${HEROKU_EMAIL}
-        password ${HEROKU_API_KEY}
-      EOF
-  git push https://git.heroku.com/${HEROKU_APP_NAME}.git master:refs/heads/master
+      printenv
