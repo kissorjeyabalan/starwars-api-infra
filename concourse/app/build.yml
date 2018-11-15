@@ -17,6 +17,7 @@ caches:
   - path: maven
 
 run:
-  path: /bin/bash
+  path: sh
   args:
-    - ls .
+  - -exc
+  - ls .
