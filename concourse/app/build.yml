@@ -5,10 +5,10 @@ image_resource:
   source:
     repository: maven
     tag: alpine
-    
+
 inputs:
 - name: source
-- name: infrastructure
+- name: infra
 
 outputs:
 - name: dockerfile
@@ -17,4 +17,4 @@ caches:
 - path: maven
 
 run:
-  path: ./infrastructure/concourse/app/build.sh
+  path: ./infra/concourse/app/build.sh

@@ -10,10 +10,12 @@ export DIR=$( pwd )
 M2_HOME="${HOME}/.m2"
 M2_CACHE="${DIR}/maven"
 
-[[ -d "${M2_CACHE}" && ! -d "${M2_HOME}" ]] && ln -s "${M2_CACHE}" "${M2_HOME}"
-SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-echo -e "${GREEN}${CHECK} Cache symlinked!${NC}"
+ls -a .
 
-mvn -f source/pom.xml install
-echo -e "${GREEN}${CHECK} Artifact built successfully!${NC}"
-ls .
+#[[ -d "${M2_CACHE}" && ! -d "${M2_HOME}" ]] && ln -s "${M2_CACHE}" "${M2_HOME}"
+#SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+#echo -e "${GREEN}${CHECK} Cache symlinked!${NC}"
+
+#mvn -f source/pom.xml install
+#echo -e "${GREEN}${CHECK} Artifact built successfully!${NC}"
+#ls .
