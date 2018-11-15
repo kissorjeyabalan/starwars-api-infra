@@ -16,3 +16,4 @@ echo -e "${GREEN}${CHECK} Cache symlinked!${NC}"
 
 mvn -f source/pom.xml install
 echo -e "${GREEN}${CHECK} Artifact built successfully!${NC}"
+ls .
