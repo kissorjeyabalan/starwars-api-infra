@@ -5,10 +5,10 @@ jobs:
   - aggregate:
     - get: infrastructure
     - get: application
-      trigger: true
+      #trigger: true
   - task: build_jar
     file: infrastructure/concourse/app/build.yml
-    input_mapping: {source: application}
+    input_mapping: {source: application, infrastructure: infrastructure}
   - put: docker-image-app
     params:
       build: dockerfile
@@ -26,7 +26,7 @@ jobs:
     params:
       heroku_email: ((heroku_email))
       heroku_api_key: ((heroku_api_key))
-      heroku_app_name: ((heroku_app_name))
+      heroku_app_name: ((heroku_app_name))-ci
 
 - name: infra
   plan:
@@ -64,6 +64,6 @@ resources:
 - name: docker-image-app
   type: docker-image
   source:
-    repository: registry.heroku.com/((heroku_app_name))/web
+    repository: registry.heroku.com/((heroku_app_name))-ci/web
     username: ((heroku_email))
     password: ((heroku_api_key))
