@@ -1,5 +1,5 @@
 provider "statuscake" {
-  username = "$STATUS_CAKE_USERNAME"
+  username = "kijstatuscakekijno"
 }
 
 resource "statuscake_test" "ci" {
