@@ -3,8 +3,8 @@ jobs:
 - name: build
   plan:
   - aggregate:
-    - get: infrastructure
     - get: application
+    - get: infrastructure
       #trigger: true
   - task: build_jar
     file: infrastructure/concourse/app/build.yml
