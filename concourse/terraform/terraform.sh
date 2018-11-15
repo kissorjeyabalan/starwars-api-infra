@@ -22,7 +22,7 @@ setup() {
     export GITHUB_TOKEN="${github_token}"
     export HEROKU_API_KEY="${heroku_api_key}"
     export HEROKU_EMAIL="${heroku_email}"
-    export STATUSCAKE_API_KEY="${statuscake_api_key}"
+    export STATUSCAKE_APIKEY="${statuscake_api_key}"
 }
 
 setup_cache() {
