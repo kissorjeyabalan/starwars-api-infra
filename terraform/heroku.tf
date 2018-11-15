@@ -30,7 +30,7 @@ resource "heroku_app" "production" {
 
 ## Production DB
 resource "heroku_addon" "db_production" {
-  name = "${heroku_app.production.name}"
+  app = "${heroku_app.production.name}"
   plan = "heroku-postgresql:hobby-dev"
 }
 
