@@ -52,15 +52,15 @@ resources:
 - name: infrastructure
   type: git
   source:
-    uri: git@github.com:<USERNAME>/exam-infra.git
+    uri: git@github.com:kissorjeyabalan/sw-api-infra.git
     branch: master
-    private_key: ((deploy_app_key))
+    private_key: ((deploy_infra_key))
 - name: application
   type: git
   source:
-    uri: git@github.com:<USERNAME>/exam-app.git
+    uri: git@github.com:kissorjeyabalan/sw-api-2.git
     branch: master
-    private_key: ((deploy_infra_key))
+    private_key: ((deploy_app_key))
 - name: docker-image-app
   type: docker-image
   source:
