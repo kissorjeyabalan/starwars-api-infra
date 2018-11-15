@@ -4,8 +4,8 @@ jobs:
   plan:
   - aggregate:
     - get: application
+      trigger: true
     - get: infrastructure
-      #trigger: true
   - task: build_jar
     file: infrastructure/concourse/app/build.yml
     input_mapping: {source: application, infra: infrastructure}
@@ -32,6 +32,7 @@ jobs:
   plan:
   - aggregate:
     - get: infrastructure
+      trigger: true
   - task: apply
     file: infrastructure/concourse/terraform/task.yml
     input_mapping: {source: infrastructure}
