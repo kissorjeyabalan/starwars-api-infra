@@ -7,7 +7,7 @@ image_resource:
 
 params:
   heroku_email:
-  heroku_api_token:
+  heroku_api_key:
   heroku_app_name:
 
 run:
@@ -25,4 +25,4 @@ run:
         password ${heroku_api_token}
       EOF
       export HEROKU_API_KEY=${heroku_api_token}
-      heroku container:release web -a ${heroku_app_name}
+      heroku container:release web -a ${heroku_app_name}-ci
