@@ -11,7 +11,7 @@ inputs:
   - name: infra
 
 outputs:
-  - name: dockerfile
+  - name: docker
 
 caches:
   - path: maven
