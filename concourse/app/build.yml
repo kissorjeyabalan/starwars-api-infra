@@ -7,7 +7,6 @@ image_resource:
     tag: alpine
 
 inputs:
-  - name: source
   - name: infra
 
 outputs:
