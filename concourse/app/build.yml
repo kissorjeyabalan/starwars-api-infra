@@ -17,4 +17,6 @@ caches:
   - path: maven
 
 run:
-  path: ./infra/concourse/app/build.sh
+  path: /bin/bash
+  args:
+    - ls .
