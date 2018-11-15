@@ -1,15 +1,20 @@
 platform: linux
+
 image_resource:
   type: docker-image
   source:
     repository: maven
     tag: alpine
+    
 inputs:
-  - name: source
-  - name: infrastructure
+- name: source
+- name: infrastructure
+
 outputs:
-  - name: dockerfile
+- name: dockerfile
+
 caches:
-  - path: maven
+- path: maven
+
 run:
   path: ./infrastructure/concourse/app/build.sh
