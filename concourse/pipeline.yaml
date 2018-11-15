@@ -8,9 +8,7 @@ jobs:
       #trigger: true
   - task: build_jar
     file: infrastructure/concourse/app/build.yml
-    input_mapping: 
-    - {source: application}
-    - {infra: infrastructure}
+    input_mapping: {source: application}
   - put: docker-image-app
     params:
       build: dockerfile

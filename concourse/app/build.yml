@@ -8,7 +8,7 @@ image_resource:
 
 inputs:
 - name: source
-- name: infra
+- name: infrastructure
 
 outputs:
 - name: dockerfile
@@ -17,4 +17,4 @@ caches:
 - path: maven
 
 run:
-  path: ./infra/concourse/app/build.sh
+  path: ./infrastructure/concourse/app/build.sh
