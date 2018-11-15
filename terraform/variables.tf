@@ -1,7 +1,7 @@
 variable "app_name" {
-  default = "$APP_PREFIX"
+  default = "swapiapp"
 }
 
 variable "pipeline_name" {
-  default = "$PIPELINE_NAME"
+  default = "swapipipeerok"
 }
