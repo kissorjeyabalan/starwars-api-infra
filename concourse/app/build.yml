@@ -17,7 +17,4 @@ caches:
   - path: maven
 
 run:
-  path: sh
-  args:
-  - -exc
-  - find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
+  path: ./infra/concourse/app/build.sh
