@@ -54,7 +54,7 @@ resource "heroku_pipeline_coupling" "staging" {
 }
 
 resource "heroku_pipeline_coupling" "production" {
-  app = "${heroku_app.ci.production}"
+  app = "${heroku_app.production.name}"
   pipeline = "${heroku_pipeline.exam-app.id}"
   stage = "production"
  }
