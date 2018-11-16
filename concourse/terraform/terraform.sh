@@ -78,7 +78,6 @@ terraform_apply() {
     git add terraform.tfstate
     git status
     git diff --quiet && git diff --staged --quiet || git commit -m 'concourse CI@Localhost'
-    git commit -m"concourse CI@Localhost"
     git clone "${DIR}/source" "${DIR}/with-state"
 }
 
