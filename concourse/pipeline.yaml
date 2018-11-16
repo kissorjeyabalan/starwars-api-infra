@@ -6,7 +6,7 @@ jobs:
     - get: application
       trigger: true
     - get: infrastructure
-  - task: build_jar
+  - task: build-app-image
     file: infrastructure/concourse/app/build.yml
     input_mapping: {source: application, infra: infrastructure}
   - put: docker-image-app

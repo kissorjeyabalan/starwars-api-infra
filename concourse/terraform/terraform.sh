@@ -70,6 +70,7 @@ terraform_apply() {
     terraform apply -refresh=true -auto-approve=true -lock-timeout=$lock_timeout
     # Fails if there is no output (which is not really a failure)
     set +e
+    mkdir -p ${DIR}/terraform
     terraform output -json > ${DIR}/terraform/output.json
     set -e
     git config --global user.email "concourse-ci@localhost"

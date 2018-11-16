@@ -58,3 +58,20 @@ resource "heroku_pipeline_coupling" "production" {
   pipeline = "${heroku_pipeline.exam-app.id}"
   stage = "production"
  }
+
+
+##### HostedGraphite
+resource "heroku_addon" "hostedgraphite-ci" {
+  app = "${heroku_app.ci.name}"
+  plan = "hostedgraphite"
+}
+
+resource "heroku_addon" "hostedgraphite-staging" {
+  app = "${heroku_app.staging.name}"
+  plan = "hostedgraphite"
+}
+
+resource "heroku_addon" "hostedgraphite-prod" {
+  app = "${heroku_app.production.name}"
+  plan = "hostedgraphite"
+}
