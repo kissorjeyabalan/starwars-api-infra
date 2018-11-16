@@ -32,6 +32,7 @@ jobs:
   plan:
   - aggregate:
     - get: infrastructure
+      trigger: true
   - task: apply
     file: infrastructure/concourse/terraform/task.yml
     input_mapping: {source: infrastructure}
