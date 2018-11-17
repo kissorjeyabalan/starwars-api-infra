@@ -17,7 +17,7 @@ echo -e "${GREEN}${CHECK} Cache symlinked!${NC}"
 mvn -f source/pom.xml install
 echo -e "${GREEN}${CHECK} Artifact built successfully!${NC}"
 
-mv ./source/target/pgr301-eksamen-0.0.1-SNAPSHOT.jar ./docker/app.jar
+mv ./source/target/pgr301-eksamen.jar ./docker/app.jar
 mv ./source/Dockerfile ./docker/
 
 find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
