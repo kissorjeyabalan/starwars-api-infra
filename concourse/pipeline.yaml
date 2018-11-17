@@ -49,6 +49,22 @@ jobs:
       repository: with-state
       rebase: true
 
+- name: update-metric-keys
+  plan:
+  - aggregate:
+    - get: infrastructure
+      passed: [infra]
+  - task: update_heroku_config
+    file: infrastructure/concourse/app/update_heroku_config.yml
+    input_mapping: {source: infrastructure}
+    params:
+      heroku_email: ((heroku_email))
+      heroku_api_key: ((heroku_api_key))
+      heroku_app_name: ((heroku_app_name))
+      graphite_carbon_ci: ((graphite_carbon_ci))
+      graphite_carbon_stage: ((graphite_carbon_stage))
+      graphite_carbon_prod: ((graphite_carbon_prod))
+
 resources:
 - name: infrastructure
   type: git
