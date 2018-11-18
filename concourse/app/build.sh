@@ -1,5 +1,5 @@
 #!/bin/sh
-set -ueox pipefail
+set -ueo pipefail
 
 export GREEN='\033[1;32m'
 export NC='\033[0m'
@@ -19,5 +19,3 @@ echo -e "${GREEN}${CHECK} Artifact built successfully!${NC}"
 
 mv ./source/target/pgr301-eksamen.jar ./docker/app.jar
 mv ./source/Dockerfile ./docker/
-
-find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
