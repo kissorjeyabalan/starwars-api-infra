@@ -63,18 +63,21 @@ jobs:
       graphite_carbon_ci: ((graphite_carbon_ci))
       graphite_carbon_stage: ((graphite_carbon_stage))
       graphite_carbon_prod: ((graphite_carbon_prod))
+      logzio_api_key_ci: ((logzio_api_key_ci))
+      logzio_api_key_stage: ((logzio_api_key_stage))
+      logzio_api_key_prod: ((logzio_api_key_prod))
 
 resources:
 - name: infrastructure
   type: git
   source:
-    uri: git@github.com:kissorjeyabalan/sw-api-infra.git
+    uri: ((infrastructure_git_source))
     branch: master
     private_key: ((deploy_infra_key))
 - name: application
   type: git
   source:
-    uri: git@github.com:kissorjeyabalan/sw-api-2.git
+    uri: ((application_git_source))
     branch: master
     private_key: ((deploy_app_key))
 - name: docker-image-app

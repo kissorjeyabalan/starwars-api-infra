@@ -1,6 +1,6 @@
 # 
 ## Deployment
-1. Fork sw-api-infra and sw-api.
+1. Fork sw-api-infra and sw-api - only master will be used by the pipeline.
 2. In sw-api-infra, edit the credentials_example.yml file with your information. Leave `graphite_carbon_X` empty.
 3. Rename the file to credentials.yml.
 4. In sw-api-infra, edit the `terraform/variables.tf` file with desired application name and pipeline name. `Do not` append or prefix -ci, -staging or -production to the application name.
@@ -30,7 +30,7 @@ By the time you're done with adding the metric keys, the deployment of applicati
     - HostedGraphite for metrics. 
     - Meter, counter and timer implemented in application.
 - Applikasjonslogger
-    - 
+    - Use logback to log to logzio
 ## Known issues
 - Due to using docker image and a hobby plan, the instance provided by heroku does not have enough memory to start the application within 60s on the first try. Therefore, swagger which is implemented, is disabled (as the application would never start in time). Even with swagger disabled, it might take a few tries before it succeeds. You can force a application restart by running the `update-metric-keys` job, if Heroku doesn't want to automatically retry.
 - Free tier of hosted graphite does not have enough metrics to show all metrics added to application
