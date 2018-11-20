@@ -12,6 +12,9 @@ params:
   graphite_carbon_ci:
   graphite_carbon_stage:
   graphite_carbon_prod:
+  logzio_api_key_ci:
+  logzio_api_key_stage:
+  logzio_api_key_prod:
 
 run:
   path: sh
@@ -31,3 +34,6 @@ run:
       heroku config:set GRAPHITE_HOST=${graphite_carbon_ci} -a ${heroku_app_name}-ci
       heroku config:set GRAPHITE_HOST=${graphite_carbon_stage} -a ${heroku_app_name}-staging
       heroku config:set GRAPHITE_HOST=${graphite_carbon_prod} -a ${heroku_app_name}-production
+      heroku config:set LOGZIO_API_KEY=${logzio_api_key_ci} -a ${heroku_app_name}-ci
+      heroku config:set LOGZIO_API_KEY=${logzio_api_key_stage} -a ${heroku_app_name}-staging
+      heroku config:set LOGZIO_API_KEY=${logzio_api_key_prod} -a ${heroku_app_name}-production

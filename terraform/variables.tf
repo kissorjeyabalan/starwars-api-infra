@@ -1,7 +1,7 @@
 variable "app_name" {
-  default = "swapiapp"
+  default = "swapi"
 }
 
 variable "pipeline_name" {
-  default = "swapipipeerok"
+  default = "swapi-pipeline"
 }

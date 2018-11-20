@@ -22,8 +22,18 @@ Once infra job is finished:
 
 By the time you're done with adding the metric keys, the deployment of application should have succeeded.
 
+## Tasks done
+- Docker
+    - Pipeline builds and deploys to Heroku with docker image
+- Overvåkning, varsling og Metrics
+    - StatusCake to monitor endpoints
+    - HostedGraphite for metrics. 
+    - Meter, counter and timer implemented in application.
+- Applikasjonslogger
+    - 
 ## Known issues
 - Due to using docker image and a hobby plan, the instance provided by heroku does not have enough memory to start the application within 60s on the first try. Therefore, swagger which is implemented, is disabled (as the application would never start in time). Even with swagger disabled, it might take a few tries before it succeeds. You can force a application restart by running the `update-metric-keys` job, if Heroku doesn't want to automatically retry.
+- Free tier of hosted graphite does not have enough metrics to show all metrics added to application
 
 ## Improvements
 Additional improvements made:
